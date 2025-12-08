@@ -122,7 +122,7 @@ void competition_initialize() {
  *
  * If the robot is disabled or communications is lost, the autonomous task
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
- * from where it left off.
+ * from where it left off.j
  */
 void autonomous() {
   // lemlib::Pose set_Pose(1, 2, 3);
