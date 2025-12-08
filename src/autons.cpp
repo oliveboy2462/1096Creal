@@ -45,14 +45,23 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
     goalX = 40;
     goalY = 40;
     goalT = 45;
+  } else if (Goal == "Red Lower Points") {
+    goalX = -60;
+    goalY = -60;
+    goalT = 90;
+  } else if (Goal == "Red Park") {
+    goalX = -165;
+    goalY = 0;
+    goalT = 90;
   } else {
     std::cout << "what goal?" << "\n";
   }
   if (type == "beginning" || type == "set") {
     chassis.setPose(lemlib::Pose(setX, setY, setT));
   }
-  if (type == "beginning" || type == "goal")
+  if (type == "beginning" || type == "goal") {
     chassis.moveToPose(goalX, goalY, goalT, 5000);
+  }
 };
 
 void pubFunctions::printANumber(float x, float y, float theta) {

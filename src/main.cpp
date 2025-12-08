@@ -129,7 +129,10 @@ void autonomous() {
   // Set the break mode for the autonomous
   chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
   fncts.moveToGoal("Red Right", "set");
+  fncts.moveToGoal("Red Lower Points", "goal");
   fncts.moveToGoal("Red Lower Goal", "goal");
+  fncts.moveToGoal("Red Park", "goal");
+
   // run auton selector,
   // watch code implode
 
