@@ -91,10 +91,13 @@ int intakeSpeed = 127;
 void pubFunctions::intakeFunc() {
   if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
     leftIntake.move_velocity(intakeSpeed);
-    rightIntake.move_velocity(intakeSpeed);
+    rightIntake.move_velocity(-intakeSpeed);
   } else if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
     leftIntake.move_velocity(-intakeSpeed);
-    rightIntake.move_velocity(-intakeSpeed);
+    rightIntake.move_velocity(intakeSpeed);
+  } else {
+    leftIntake.move_velocity(0);
+    rightIntake.move_velocity(0);
   }
   pros::delay(1000);
 };
