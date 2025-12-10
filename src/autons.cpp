@@ -81,9 +81,9 @@ void moveToThis(float x, float y, float theta) {
 };
 
 pros::Controller masterController(pros::E_CONTROLLER_MASTER);
-pros::Motor leftIntake(12);
-pros::Motor rightIntake(14);
-pros::Motor conveyor(13);
+pros::Motor leftIntake(3);
+pros::Motor rightIntake(8);
+pros::Motor conveyor(4);
 int intakeSpeed = 127;
 int conveyorSpeed = 130;
 // look at the motor is clockwise positive velocities are clockwise and opposite
