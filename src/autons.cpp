@@ -99,7 +99,7 @@ void pubFunctions::intakeFunc() {
     leftIntake.move_velocity(0);
     rightIntake.move_velocity(0);
   }
-  pros::delay(1000);
+  pros::delay(100);
 };
 
 // void pubFunctions::conveyorFunc() {
