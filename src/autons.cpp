@@ -83,9 +83,9 @@ void moveToThis(float x, float y, float theta) {
 pros::Controller masterController(pros::E_CONTROLLER_MASTER);
 pros::Motor leftIntake(3);
 pros::Motor rightIntake(8);
-pros::Motor conveyor(4);
+// pros::Motor conveyor(4);
 int intakeSpeed = 127;
-int conveyorSpeed = 130;
+// int conveyorSpeed = 130;
 // look at the motor is clockwise positive velocities are clockwise and opposite
 // is anti (-127 - 127)
 void pubFunctions::intakeFunc() {
@@ -99,14 +99,14 @@ void pubFunctions::intakeFunc() {
   pros::delay(1000);
 };
 
-void pubFunctions::conveyorFunc() {
-  if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-    conveyor.move_velocity(conveyorSpeed);
-  } else if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-    conveyor.move_velocity(-conveyorSpeed);
-  }
-  pros::delay(1000);
-}
+// void pubFunctions::conveyorFunc() {
+//   if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+//     conveyor.move_velocity(conveyorSpeed);
+//   } else if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+//     conveyor.move_velocity(-conveyorSpeed);
+//   }
+//   pros::delay(1000);
+// }
 //* void pubFunctions::speedControl(pros::MotorGroup leftGroup,
-//                     pros::MotorGroup rightGroup) {
-// if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+//                      pros::MotorGroup rightGroup) {
+//  if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
