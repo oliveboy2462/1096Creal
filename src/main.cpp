@@ -183,7 +183,7 @@ void opcontrol() {
     int leftY = (master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
     int rightY = (master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y));
     // make it TENK with the joysticks
-    chassis.tank(leftY, rightY);
+    chassis.tank(leftY, -rightY);
     fncts.intakeFunc();
     // fncts.speedControl(pros::MotorGroup({1, 9}, pros::MotorGearset::blue),
     // pros::MotorGroup({2, 10}, pros::MotorGearset::blue));

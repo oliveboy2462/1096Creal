@@ -58,9 +58,11 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
   }
   if (type == "beginning" || type == "set") {
     chassis.setPose(lemlib::Pose(setX, setY, setT));
+    std::cout << setX << setY << setT << "\n";
   }
   if (type == "beginning" || type == "goal") {
     chassis.moveToPose(goalX, goalY, goalT, 5000);
+    std::cout << goalX << goalY << goalT << "\n";
   }
 };
 
