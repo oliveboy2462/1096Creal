@@ -16,34 +16,34 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
   if (Goal == "Red Left") {
     goalX = -goalX;
     goalY = goalY;
-    goalT = 270;
+    goalT = 90;
     setX = -setX;
     setY = setY;
     setT = 90;
   } else if (Goal == "Red Right") {
     goalX = -goalX;
     goalY = -goalY;
-    goalT = 270;
+    goalT = 90;
     setX = -setX;
     setY = -setY;
     setT = 90;
   } else if (Goal == "Blue Left") {
     goalX = goalX;
     goalY = -goalY;
-    goalT = 90;
+    goalT = 270;
     setX = setX;
     setY = -setY;
     setT = 270;
   } else if (Goal == "Blue Right") {
     goalX = goalX;
     goalY = goalY;
-    goalT = 90;
+    goalT = 270;
     setX = setX;
     setY = setY;
     setT = 270;
   } else if (Goal == "Red Lower Goal") {
-    goalX = 40;
-    goalY = 40;
+    goalX = -40;
+    goalY = -40;
     goalT = 45;
   } else if (Goal == "Red Lower Points") {
     goalX = -60;
