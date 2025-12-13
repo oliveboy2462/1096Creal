@@ -42,15 +42,15 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
     setY = setY;
     setT = 270;
   } else if (Goal == "Red Lower Goal") {
-    goalX = -40;
-    goalY = -40;
+    goalX = -10;
+    goalY = -10;
     goalT = 45;
   } else if (Goal == "Red Lower Points") {
-    goalX = -60;
-    goalY = -60;
+    goalX = -27;
+    goalY = -20;
     goalT = 90;
   } else if (Goal == "Red Park") {
-    goalX = -165;
+    goalX = -60;
     goalY = 0;
     goalT = 90;
   } else {
@@ -64,6 +64,7 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
     chassis.moveToPose(goalX, goalY, goalT, 5000);
     std::cout << goalX << goalY << goalT << "\n";
   }
+  std::cout << Goal << "\n";
 };
 
 void pubFunctions::printANumber(float x, float y, float theta) {
