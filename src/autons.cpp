@@ -5,6 +5,11 @@
 #include "pros/misc.hpp"
 #include "pros/rtos.hpp"
 
+pros::Controller masterController(pros::E_CONTROLLER_MASTER);
+pros::Motor leftIntake(3);
+pros::Motor rightIntake(8);
+// pros::Motor conveyor(4);
+int intakeSpeed = 127;
 // int printNumber = 5;
 int velocity = 100;
 void pubFunctions::moveToGoal(std::string Goal, std::string type) {
@@ -12,7 +17,7 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
   float goalY = 47.5;
   float goalT;
   float setX = 64;
-  float setY = 20;
+  float setY = 18;
   float setT;
   if (Goal == "Red Left") {
     goalX = -goalX;
@@ -45,10 +50,10 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
   } else if (Goal == "Red Lower Goal") {
     goalX = -10;
     goalY = -10;
-    goalT = 40;
+    goalT = 45;
   } else if (Goal == "Red Lower Points") {
     goalX = -27;
-    goalY = -20;
+    goalY = -18;
     goalT = 90;
   } else if (Goal == "Red Park") {
     goalX = -60;
@@ -68,6 +73,11 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
   if (type == "beginning" || type == "goal") {
     chassis.moveToPose(goalX, goalY, goalT, 5000);
     std::cout << goalX << goalY << goalT << "\n";
+    if (Goal == "Red Lower Goal") {
+      pros::delay(5000);
+      leftIntake.move_velocity(-intakeSpeed);
+      rightIntake.move_velocity(intakeSpeed);
+    }
   }
   std::cout << Goal << "\n";
 };
@@ -88,11 +98,6 @@ void moveToThis(float x, float y, float theta) {
   lemlib::Pose goal(x, y, theta);
 };
 
-pros::Controller masterController(pros::E_CONTROLLER_MASTER);
-pros::Motor leftIntake(3);
-pros::Motor rightIntake(8);
-// pros::Motor conveyor(4);
-int intakeSpeed = 127;
 // int conveyorSpeed = 130;
 // look at the motor is clockwise positive velocities are clockwise and opposite
 // is anti (-127 - 127)
@@ -117,9 +122,6 @@ void pubFunctions::autonIntake(std::string inOrOut) {
   } else if (inOrOut == "Out") {
     leftIntake.move_velocity(-intakeSpeed);
     rightIntake.move_velocity(intakeSpeed);
-    pros::delay(1000);
-    leftIntake.move_velocity(0);
-    rightIntake.move_velocity(0);
   }
 }
 // void pubFunctions::conveyorFunc() {

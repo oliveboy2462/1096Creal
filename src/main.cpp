@@ -131,9 +131,9 @@ void autonomous() {
   fncts.moveToGoal("Red Right", "set");
   fncts.moveToGoal("Red Lower Points", "goal");
   fncts.moveToGoal("Red Lower Goal", "goal");
-  pros::delay(2500);
-  fncts.autonIntake("Out");
-  // fncts.moveToGoal("Red Park", "goal");
+  //  pros::delay(2500);
+  //  fncts.autonIntake("Out");
+  //   fncts.moveToGoal("Red Park", "goal");
 
   // run auton selector,
   // watch code implode
