@@ -3,6 +3,7 @@
 #include "main.h"
 #include "pros/misc.h"
 #include "pros/misc.hpp"
+#include "pros/rtos.hpp"
 
 // int printNumber = 5;
 int velocity = 100;
@@ -44,7 +45,7 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
   } else if (Goal == "Red Lower Goal") {
     goalX = -10;
     goalY = -10;
-    goalT = 45;
+    goalT = 40;
   } else if (Goal == "Red Lower Points") {
     goalX = -27;
     goalY = -20;
@@ -109,6 +110,18 @@ void pubFunctions::intakeFunc() {
   pros::delay(100);
 };
 
+void pubFunctions::autonIntake(std::string inOrOut) {
+  if (inOrOut == "In") {
+    leftIntake.move_velocity(intakeSpeed);
+    rightIntake.move_velocity(-intakeSpeed);
+  } else if (inOrOut == "Out") {
+    leftIntake.move_velocity(-intakeSpeed);
+    rightIntake.move_velocity(intakeSpeed);
+    pros::delay(1000);
+    leftIntake.move_velocity(0);
+    rightIntake.move_velocity(0);
+  }
+}
 // void pubFunctions::conveyorFunc() {
 //   if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
 //     conveyor.move_velocity(conveyorSpeed);

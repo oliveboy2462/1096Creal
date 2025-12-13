@@ -18,5 +18,6 @@ public: // public information: implied what it does there is also an opposite
   void opControl();
   void speedControl(pros::MotorGroup leftGroup, pros::MotorGroup rightGroup);
   void intakeFunc();
+  void autonIntake(std::string inOrOut);
   // void conveyorFunc();
 };

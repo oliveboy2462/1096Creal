@@ -19,7 +19,7 @@ int printNumber = 13;
 // Create Left and Right Motor sets on the drivetrain, set to negative to
 // reverse motors
 pros::MotorGroup left_motors({1, 9}, pros::MotorGearset::blue);
-pros::MotorGroup right_motors({2, 10}, pros::MotorGearset::blue);
+pros::MotorGroup right_motors({-2, -10}, pros::MotorGearset::blue);
 // Create a Drivetrain Object
 lemlib::Drivetrain drivetrain(&left_motors,  // left motor group
                               &right_motors, // right motor group
@@ -128,16 +128,12 @@ void autonomous() {
   // lemlib::Pose set_Pose(1, 2, 3);
   // Set the break mode for the autonomous
   chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
-  chassis.setPose(lemlib::Pose(0, 0, 90));
-  chassis.moveToPose(30, 0, 90, 5000);
-  pros::delay(300);
-  chassis.moveToPose(-10, -10, 45, 5000);
-  pros::delay(300);
-  chassis.moveToPose(-60, 0, 90, 5000);
-  // fncts.moveToGoal("Red Top", "s0o9lj,kmet");
-  // fncts.moveToGoal("Red Lower Points", "goal");
-  // fncts.moveToGoal("Red Lower Goal", "goal");
-  // nfncts.moveToGoal("Red Park", "goal");
+  fncts.moveToGoal("Red Right", "set");
+  fncts.moveToGoal("Red Lower Points", "goal");
+  fncts.moveToGoal("Red Lower Goal", "goal");
+  pros::delay(2500);
+  fncts.autonIntake("Out");
+  // fncts.moveToGoal("Red Park", "goal");
 
   // run auton selector,
   // watch code implode
@@ -189,7 +185,7 @@ void opcontrol() {
     int leftY = (master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
     int rightY = (master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y));
     // make it TENK with the joysticks
-    chassis.tank(leftY, -rightY);
+    chassis.tank(leftY, rightY);
     fncts.intakeFunc();
     // fncts.speedControl(pros::MotorGroup({1, 9}, pros::MotorGearset::blue),
     // pros::MotorGroup({2, 10}, pros::MotorGearset::blue));
