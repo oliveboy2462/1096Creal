@@ -53,6 +53,10 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
     goalX = -60;
     goalY = 0;
     goalT = 90;
+  } else if (Goal == "Red Top") {
+    setX = -47;
+    setY = 0;
+    setT = 90;
   } else {
     std::cout << "what goal?" << "\n";
   }

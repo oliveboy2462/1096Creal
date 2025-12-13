@@ -128,10 +128,16 @@ void autonomous() {
   // lemlib::Pose set_Pose(1, 2, 3);
   // Set the break mode for the autonomous
   chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
-  fncts.moveToGoal("Red Left", "beginning");
+  chassis.setPose(lemlib::Pose(-47, 0, 90));
+  chassis.moveToPose(-27, -28, 90, 5000);
+  pros::delay(300);
+  chassis.moveToPose(-10, -10, 45, 5000);
+  pros::delay(300);
+  chassis.moveToPose(-60, 0, 90, 5000);
+  // fncts.moveToGoal("Red Top", "set");
   // fncts.moveToGoal("Red Lower Points", "goal");
   // fncts.moveToGoal("Red Lower Goal", "goal");
-  // fncts.moveToGoal("Red Park", "goal");
+  // nfncts.moveToGoal("Red Park", "goal");
 
   // run auton selector,
   // watch code implode
