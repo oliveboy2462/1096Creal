@@ -8,6 +8,7 @@
 pros::Controller masterController(pros::E_CONTROLLER_MASTER);
 pros::Motor leftIntake(3);
 pros::Motor rightIntake(8);
+pros::Motor conveyorMotor(15);
 // pros::Motor conveyor(4);
 int intakeSpeed = 127;
 // int printNumber = 5;
@@ -33,20 +34,6 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
     setX = -setX;
     setY = -setY;
     setT = 90;
-  } else if (Goal == "Blue Left") {
-    goalX = goalX;
-    goalY = -goalY;
-    goalT = 270;
-    setX = setX;
-    setY = -setY;
-    setT = 270;
-  } else if (Goal == "Blue Right") {
-    goalX = goalX;
-    goalY = goalY;
-    goalT = 270;
-    setX = setX;
-    setY = setY;
-    setT = 270;
   } else if (Goal == "Red Lower Goal") {
     goalX = -10;
     goalY = -10;
@@ -74,9 +61,9 @@ void pubFunctions::moveToGoal(std::string Goal, std::string type) {
     chassis.moveToPose(goalX, goalY, goalT, 5000);
     std::cout << goalX << goalY << goalT << "\n";
     if (Goal == "Red Lower Goal") {
-      pros::delay(5000);
-      leftIntake.move_velocity(-intakeSpeed);
-      rightIntake.move_velocity(intakeSpeed);
+      // pros::delay(10000);
+      // leftIntake.move_velocity(-intakeSpeed);
+      // rightIntake.move_velocity(intakeSpeed);
     }
   }
   std::cout << Goal << "\n";
@@ -122,6 +109,14 @@ void pubFunctions::autonIntake(std::string inOrOut) {
   } else if (inOrOut == "Out") {
     leftIntake.move_velocity(-intakeSpeed);
     rightIntake.move_velocity(intakeSpeed);
+  }
+}
+
+void pubFunctions::conveyorFunc() {
+  if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+    conveyorMotor.move_velocity(intakeSpeed);
+  } else if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+    conveyorMotor.move_velocity(-intakeSpeed);
   }
 }
 // void pubFunctions::conveyorFunc() {
