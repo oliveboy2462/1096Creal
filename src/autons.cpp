@@ -119,6 +119,8 @@ void pubFunctions::conveyorFunc() {
     std::cout << "conveyor" << "\n";
   } else if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
     conveyorMotor.move_velocity(intakeSpeed);
+  } else {
+    conveyorMotor.move_velocity(0);
   }
 }
 // void pubFunctions::conveyorFunc() {
