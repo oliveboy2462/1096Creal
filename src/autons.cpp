@@ -8,7 +8,8 @@
 pros::Controller masterController(pros::E_CONTROLLER_MASTER);
 pros::Motor leftIntake(3);
 pros::Motor rightIntake(7);
-pros::Motor conveyorMotor(15);
+// port 8 and 15 cannot be used
+pros::Motor conveyorMotor(4);
 // pros::Motor conveyor(4);
 int intakeSpeed = 127;
 // int printNumber = 5;
@@ -115,6 +116,7 @@ void pubFunctions::autonIntake(std::string inOrOut) {
 void pubFunctions::conveyorFunc() {
   if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
     conveyorMotor.move_velocity(-intakeSpeed);
+    std::cout << "conveyor" << "\n";
   } else if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
     conveyorMotor.move_velocity(intakeSpeed);
   }
