@@ -4,7 +4,7 @@
 #include "pros/misc.h"
 #include "pros/misc.hpp"
 #include "pros/rtos.hpp"
-
+// pros mu is the upload and build command
 pros::Controller masterController(pros::E_CONTROLLER_MASTER);
 pros::Motor leftIntake(3);
 pros::Motor rightIntake(8);
@@ -113,10 +113,10 @@ void pubFunctions::autonIntake(std::string inOrOut) {
 }
 
 void pubFunctions::conveyorFunc() {
-  if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-    conveyorMotor.move_velocity(intakeSpeed);
-  } else if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+  if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
     conveyorMotor.move_velocity(-intakeSpeed);
+  } else if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+    conveyorMotor.move_velocity(intakeSpeed);
   }
 }
 // void pubFunctions::conveyorFunc() {
