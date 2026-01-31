@@ -7,7 +7,7 @@
 // pros mu is the upload and build command
 pros::Controller masterController(pros::E_CONTROLLER_MASTER);
 pros::Motor leftIntake(3);
-pros::Motor rightIntake(8);
+pros::Motor rightIntake(7);
 pros::Motor conveyorMotor(15);
 // pros::Motor conveyor(4);
 int intakeSpeed = 127;
