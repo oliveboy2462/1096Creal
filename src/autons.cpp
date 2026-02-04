@@ -123,6 +123,14 @@ void pubFunctions::conveyorFunc() {
     conveyorMotor.move_velocity(0);
   }
 }
+
+void pubFunctions::autonConveyor(std::string inOrOut) {
+  if (inOrOut == "In") {
+    conveyorMotor.move_velocity(-intakeSpeed);
+  } else if (inOrOut == "Out") {
+    conveyorMotor.move_velocity(intakeSpeed);
+  }
+}
 // void pubFunctions::conveyorFunc() {
 //   if (masterController.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
 //     conveyor.move_velocity(conveyorSpeed);

@@ -20,5 +20,6 @@ public: // public information: implied what it does there is also an opposite
   void intakeFunc();
   void autonIntake(std::string inOrOut);
   void conveyorFunc();
+  void autonConveyor(std::string inOrOut);
   // void conveyorFunc();
 };
