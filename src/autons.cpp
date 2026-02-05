@@ -23,8 +23,10 @@ void pubFunctions::moveToGoal(std::string Goal, std::string Quadrant,
     goalX = 48;
     if (Quadrant != "Middle") {
       goalX = 64;
-      goalY = 17
+      goalY = 17;
     }
+  } else if (Goal == "Park") {
+    goalX = 64;
   } else if (Goal == "Middle Goal") {
     goalX = 12;
     goalY = 12;
@@ -46,6 +48,7 @@ void pubFunctions::moveToGoal(std::string Goal, std::string Quadrant,
   } else {
     std::cout << "what goal?" << "\n";
   }
+  goalX = -goalX;
   if (Quadrant == "Left") {
     goalY = -goalY;
   }
@@ -97,6 +100,9 @@ void pubFunctions::autonIntake(std::string inOrOut) {
   } else if (inOrOut == "Out") {
     leftIntake.move_velocity(-intakeSpeed);
     rightIntake.move_velocity(intakeSpeed);
+  } else if (inOrOut == "Stop") {
+    leftIntake.move_velocity(0);
+    rightIntake.move_velocity(0);
   }
 }
 
@@ -116,6 +122,8 @@ void pubFunctions::autonConveyor(std::string inOrOut) {
     conveyorMotor.move_velocity(-intakeSpeed);
   } else if (inOrOut == "Out") {
     conveyorMotor.move_velocity(intakeSpeed);
+  } else if (inOrOut == "Stop") {
+    conveyorMotor.move_velocity(0);
   }
 }
 // void pubFunctions::conveyorFunc() {
