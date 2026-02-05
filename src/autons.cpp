@@ -14,58 +14,45 @@ pros::Motor conveyorMotor(4);
 int intakeSpeed = 127;
 // int printNumber = 5;
 int velocity = 100;
-void pubFunctions::moveToGoal(std::string Goal, std::string type) {
-  float goalX = 32;
-  float goalY = 47.5;
-  float goalT;
-  float setX = 64;
-  float setY = 18;
-  float setT;
-  if (Goal == "Red Left") {
-    goalX = -goalX;
-    goalY = goalY;
-    goalT = 90;
-    setX = -setX;
-    setY = setY;
-    setT = 90;
-  } else if (Goal == "Red Right") {
-    goalX = -goalX;
-    goalY = -goalY;
-    goalT = 90;
-    setX = -setX;
-    setY = -setY;
-    setT = 90;
-  } else if (Goal == "Red Lower Goal") {
-    goalX = -10;
-    goalY = -10;
+void pubFunctions::moveToGoal(std::string Goal, std::string Quadrant,
+                              std::string type) {
+  float goalX = 0;
+  float goalY = 0;
+  float goalT = 90;
+  if (Goal == "Starting") {
+    goalX = 48;
+    if (Quadrant != "Middle") {
+      goalX = 64;
+      goalY = 17
+    }
+  } else if (Goal == "Middle Goal") {
+    goalX = 12;
+    goalY = 12;
     goalT = 45;
-  } else if (Goal == "Red Lower Points") {
-    goalX = -27;
-    goalY = -18;
-    goalT = 90;
-  } else if (Goal == "Red Park") {
-    goalX = -60;
-    goalY = 0;
-    goalT = 90;
-  } else if (Goal == "Red Top") {
-    setX = -47;
-    setY = 0;
-    setT = 90;
+  } else if (Goal == "Middle Corners") {
+    goalX = 23;
+    goalY = 23;
+  } else if (Goal == "Halfway to Other Side") {
+    goalX = 35;
+    goalY = 23;
+    goalT = 180;
+  } else if (Goal == "Match Load") {
+    goalX = 60;
+    goalY = 45;
+    goalT = 270;
+  } else if (Goal == "Long Goal") {
+    goalX = 30;
+    goalY = 45;
   } else {
     std::cout << "what goal?" << "\n";
   }
-  if (type == "beginning" || type == "set") {
-    chassis.setPose(lemlib::Pose(setX, setY, setT));
-    std::cout << setX << setY << setT << "\n";
+  if (Quadrant == "Left") {
+    goalY = -goalY;
   }
-  if (type == "beginning" || type == "goal") {
-    chassis.moveToPose(goalX, goalY, goalT, 5000);
-    std::cout << goalX << goalY << goalT << "\n";
-    if (Goal == "Red Lower Goal") {
-      // pros::delay(10000);
-      // leftIntake.move_velocity(-intakeSpeed);
-      // rightIntake.move_velocity(intakeSpeed);
-    }
+  if (type == "Set") {
+    chassis.setPose(lemlib::Pose(goalX, goalY, goalT));
+  } else if (type == "Goal") {
+    chassis.moveToPose(goalX, goalY, goalT, 200);
   }
   std::cout << Goal << "\n";
 };
