@@ -47,17 +47,24 @@ void pubFunctions::moveToGoal(std::string Goal, std::string Quadrant,
     goalY = 45;
   } else {
     std::cout << "what goal?" << "\n";
+    pros::lcd::print(4, "what goal?");
   }
   goalX = -goalX;
   if (Quadrant == "Left") {
     goalY = -goalY;
+    if (goalT != 270) {
+      goalT = 90 - (goalT - 90);
+    }
   }
   if (type == "Set") {
     chassis.setPose(lemlib::Pose(goalX, goalY, goalT));
   } else if (type == "Goal") {
-    chassis.moveToPose(goalX, goalY, goalT, 200);
+    chassis.moveToPose(goalX, goalY, goalT, 3000);
   }
-  std::cout << Goal << "\n";
+  pros::lcd::print(3, "what goal done");
+  // std::cout << Goal << "\n";
+
+  // pros::delay(350);
 };
 
 void pubFunctions::printANumber(float x, float y, float theta) {

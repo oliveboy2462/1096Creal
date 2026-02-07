@@ -30,6 +30,7 @@ lemlib::Drivetrain drivetrain(&left_motors,  // left motor group
 );
 pubFunctions fncts; // calls the object auton and duplicate it with another name
                     // (ctrl f fncts to find usage)
+variablesAndLists VnL;
 
 // Initialize odomerty sensors, in this case only an IMU
 lemlib::OdomSensors
@@ -84,6 +85,7 @@ pros::Controller master(pros::E_CONTROLLER_MASTER);
  */
 // Make sure bot is ready
 void initialize() {
+  pros::lcd::print(0, "initialize");
   chassis.calibrate(true);
   // Initialize chassis and macros
   master.rumble(".");
@@ -125,11 +127,18 @@ void competition_initialize() {
  * from where it left off.j
  */
 void autonomous() {
+  pros::lcd::print(1, "autonomous started");
+
   // lemlib::Pose set_Pose(1, 2, 3);
   // Set the break mode for the autonomous
   chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
+  // chassis.setPose(lemlib::Pose(48, 0, 90));
+  // chassis.moveToPose(35, 25, 180, 2000);
+
   fncts.moveToGoal("Starting", "Left", "Set");
-  fncts.moveToGoal("Halfway to Long Goal", "Left", "Goal");
+
+  fncts.moveToGoal("Halfway to Other Side", "Left", "Goal");
+
   fncts.moveToGoal("Match Load", "Left", "Goal");
   fncts.autonIntake("In");
   fncts.autonConveyor("In");
@@ -143,7 +152,6 @@ void autonomous() {
   fncts.autonIntake("Stop");
   fncts.autonConveyor("Stop");
   fncts.moveToGoal("Starting", "Left", "Goal");
-
   // run auton selector,
   // watch code implode
 

@@ -4,7 +4,12 @@
 //  multiple definition errors
 // that can arise when the same header file is included more than once in a
 // translation unit.
+#include "algorithm"
+#include "iostream"
+#include "list"
 #include "main.h"
+#include <string>
+
 // ig it includes where you can check for functions and values
 // says that there is a void function somewhere
 
@@ -22,4 +27,15 @@ public: // public information: implied what it does there is also an opposite
   void conveyorFunc();
   void autonConveyor(std::string inOrOut);
   // void conveyorFunc();
+};
+
+class variablesAndLists {
+public:
+  std::list<std::string> autonPlaces{"Starting",
+                                     "Park",
+                                     "Middle Goal",
+                                     "Middle Corners",
+                                     "Halfway to Other Side",
+                                     "Match Load",
+                                     "Long Goal"};
 };
