@@ -135,23 +135,23 @@ void autonomous() {
   // chassis.setPose(lemlib::Pose(48, 0, 90));
   // chassis.moveToPose(35, 25, 180, 2000);
 
-  fncts.moveToGoal("Starting", "Left", "Set");
+  fncts.moveToGoal("Starting", VnL.quad, "Set");
 
-  fncts.moveToGoal("Halfway to Other Side", "Left", "Goal");
+  fncts.moveToGoal("Halfway to Other Side", VnL.quad, "Goal");
 
-  fncts.moveToGoal("Match Load", "Left", "Goal");
+  fncts.moveToGoal("Match Load", VnL.quad, "Goal");
   fncts.autonIntake("In");
   fncts.autonConveyor("In");
   pros::delay(400);
   fncts.autonIntake("Stop");
   fncts.autonConveyor("Stop");
-  fncts.moveToGoal("Long Goal", "Left", "Goal");
+  fncts.moveToGoal("Long Goal", VnL.quad, "Goal");
   fncts.autonIntake("In");
   fncts.autonConveyor("In");
   pros::delay(400);
   fncts.autonIntake("Stop");
   fncts.autonConveyor("Stop");
-  fncts.moveToGoal("Starting", "Left", "Goal");
+  fncts.moveToGoal("Starting", VnL.quad, "Goal");
   // run auton selector,
   // watch code implode
 

@@ -38,4 +38,5 @@ public:
                                      "Halfway to Other Side",
                                      "Match Load",
                                      "Long Goal"};
+  std::string quad = "Left";
 };
