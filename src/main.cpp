@@ -3,6 +3,7 @@
 // Include Necessary Libraries
 #include "main.h"
 #include "autons.hpp"
+#include <iostream>
 
 int printNumber = 13;
 // c++ doesn't like it when you change variables so no extern, but they already
@@ -132,28 +133,31 @@ void autonomous() {
   // lemlib::Pose set_Pose(1, 2, 3);
   // Set the break mode for the autonomous
   chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
-  // chassis.setPose(lemlib::Pose(48, 0, 90));
-  // chassis.moveToPose(35, 25, 180, 2000);
-
-  fncts.moveToGoal("Starting", VnL.quad, "Set");
-
-  fncts.moveToGoal("Halfway to Other Side", VnL.quad, "Goal");
-
-  fncts.moveToGoal("Match Load", VnL.quad, "Goal");
-  fncts.autonIntake("In");
-  fncts.autonConveyor("In");
-  pros::delay(400);
-  fncts.autonIntake("Stop");
-  fncts.autonConveyor("Stop");
-  fncts.moveToGoal("Long Goal", VnL.quad, "Goal");
-  fncts.autonIntake("In");
-  fncts.autonConveyor("In");
-  pros::delay(400);
-  fncts.autonIntake("Stop");
-  fncts.autonConveyor("Stop");
-  fncts.moveToGoal("Starting", VnL.quad, "Goal");
-  // run auton selector,
-  // watch code implode
+  chassis.setPose(lemlib::Pose(-65, 17, 90));
+  // chassis.moveToPose(-35, 17, 90, 2000);
+  chassis.moveToPose(-35, 23, 0, 2000);
+  chassis.waitUntilDone();
+  // pros::delay(5000);
+  // chassis.setPose(lemlib::Pose(-35, 23, 0));
+  chassis.moveToPose(-60, 45, -90, 2000);
+  std::cout << right_motors.get_actual_velocity(0) << "\n";
+  // chassis.setPose(lemlib::Pose(-64, 17, 270));
+  // fncts.moveToGoal("Halfway to Other Side", "Left");
+  // fncts.moveToGoal("Match Load", "Left");
+  // fncts.autonIntake("In");
+  // fncts.autonConveyor("In");
+  //  pros::delay(400);
+  //  fncts.autonIntake("Stop");
+  //  fncts.autonConveyor("Stop");
+  //  fncts.moveToGoal("Long Goal", VnL.quad, "Goal");
+  //  fncts.autonIntake("In");
+  //  fncts.autonConveyor("In");
+  //  pros::delay(400);
+  //  fncts.autonIntake("Stop");
+  //  fncts.autonConveyor("Stop");
+  //  fncts.moveToGoal("Starting", VnL.quad, "Goal");
+  //   run auton selector,
+  //   watch code implode
 
   // Run specific auton, uncomment used Auton, NOTICE, this is the MAIN file,
   // not the AUTON file, once you get to this point, I can teach you how to

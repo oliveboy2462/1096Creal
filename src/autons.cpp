@@ -14,8 +14,7 @@ pros::Motor conveyorMotor(4);
 int intakeSpeed = 127;
 // int printNumber = 5;
 int velocity = 100;
-void pubFunctions::moveToGoal(std::string Goal, std::string Quadrant,
-                              std::string type) {
+void pubFunctions::moveToGoal(std::string Goal, std::string Quadrant) {
   float goalX = 0;
   float goalY = 0;
   float goalT = 90;
@@ -39,8 +38,8 @@ void pubFunctions::moveToGoal(std::string Goal, std::string Quadrant,
     goalY = 23;
     goalT = 180;
   } else if (Goal == "Match Load") {
-    goalX = 60;
-    goalY = 45;
+    goalX = 60; // 60
+    goalY = 45; // 45
     goalT = 270;
   } else if (Goal == "Long Goal") {
     goalX = 30;
@@ -50,17 +49,15 @@ void pubFunctions::moveToGoal(std::string Goal, std::string Quadrant,
     pros::lcd::print(4, "what goal?");
   }
   goalX = -goalX;
+  goalY = -goalY;
   if (Quadrant == "Left") {
     goalY = -goalY;
     if (goalT != 270) {
       goalT = 90 - (goalT - 90);
     }
   }
-  if (type == "Set") {
-    chassis.setPose(lemlib::Pose(goalX, goalY, goalT));
-  } else if (type == "Goal") {
-    chassis.moveToPose(goalX, goalY, goalT, 3000);
-  }
+
+  chassis.moveToPose(goalX, goalY, goalT, 3000);
   pros::lcd::print(3, "what goal done");
   // std::cout << Goal << "\n";
 

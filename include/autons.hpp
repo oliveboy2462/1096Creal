@@ -19,7 +19,7 @@ public: // public information: implied what it does there is also an opposite
         // called private:
   void function();
   void printANumber(float x, float y, float theta);
-  void moveToGoal(std::string Goal, std::string Quadrant, std::string type);
+  void moveToGoal(std::string Goal, std::string Quadrant);
   void opControl();
   void speedControl(pros::MotorGroup leftGroup, pros::MotorGroup rightGroup);
   void intakeFunc();
